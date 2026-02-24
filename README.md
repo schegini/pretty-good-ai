@@ -1,4 +1,4 @@
-# Voice Bot — AI Patient Simulator
+# Voice Bot: AI Patient Simulator
 
 An automated voice bot that calls a medical office's AI receptionist, simulates realistic patient scenarios, and identifies bugs in the agent's responses. Built for the Pretty Good AI engineering assessment.
 
@@ -83,8 +83,8 @@ python make_call.py all --delay 45
 
 ```
 ┌─────────────┐    audio (μ-law)    ┌──────────────┐    audio (μ-law)    ┌─────────────────┐
-│  Telnyx      │ ◄────────────────► │  FastAPI      │ ◄────────────────► │  OpenAI Realtime │
-│  (phone call)│    WebSocket        │  Server       │    WebSocket        │  API (patient)   │
+│  Telnyx     │ ◄────────────────►  │  FastAPI     │ ◄────────────────►  │ OpenAI Realtime │
+│ (phone call)│    WebSocket        │  Server      │    WebSocket        │  API (patient)  │
 └─────────────┘                     └──────────────┘                     └─────────────────┘
                                           │
                                           ▼
