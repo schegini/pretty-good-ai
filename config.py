@@ -16,7 +16,7 @@ WEBHOOK_URL = f"{WEBHOOK_BASE_URL}/webhook"
 STREAM_URL = f"{WEBHOOK_BASE_URL.replace('https://', 'wss://').replace('http://', 'ws://')}/media-stream"
 
 # OpenAI Realtime model
-REALTIME_MODEL = "gpt-4o-realtime-preview-2024-12-17"
+REALTIME_MODEL = "gpt-4o-realtime-preview"
 
 # Call settings
 MAX_CALL_DURATION = 240  # seconds (4 min)
