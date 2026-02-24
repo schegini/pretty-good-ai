@@ -13,7 +13,7 @@ import time
 
 import httpx
 
-SERVER = "http://localhost:8000"
+SERVER = "http://localhost:80"
 
 
 def list_scenarios():
