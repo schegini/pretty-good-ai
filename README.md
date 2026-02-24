@@ -98,6 +98,6 @@ python make_call.py all --delay 45
 | `TELNYX_API_KEY` | Telnyx API v2 key |
 | `TELNYX_CONNECTION_ID` | Telnyx connection/app ID |
 | `TELNYX_FROM_NUMBER` | Your Telnyx phone number (E.164) |
-| `TARGET_NUMBER` | Test line to call (default: +18054398008) |
+| `TARGET_NUMBER` | Test line to call  |
 | `OPENAI_API_KEY` | OpenAI API key (needs Realtime API access) |
 | `WEBHOOK_BASE_URL` | Public ngrok URL |
