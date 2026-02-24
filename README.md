@@ -13,7 +13,7 @@ Key design choices:
 - Realtime API over text-based STT/LLM/TTS for dramatically lower latency and more natural conversation flow. The model reasons about tone and pacing, not just words.
 - g711_ulaw end-to-end to avoid audio transcoding overhead. Telnyx streams PCMU natively, and the Realtime API accepts it directly.
 - RTP bidirectional streaming mode on Telnyx so raw audio (not MP3) can be sent back to the call.
-- Telnyx over Twilio for lower per-minute telephony costs.
+- Telnyx over Twilio because Telnyx runs on a private IP backbone instead of Twilio's public internet infrastructure. This is better and more secure for dealing with healthcare patients who have sensitive information.
 - Transcripts are captured from the Realtime API's built-in Whisper transcription of both audio tracks.
 
 ## Setup
@@ -53,7 +53,7 @@ Fill in all values. Phone numbers must be in E.164 format with no dashes or spac
 In Telnyx Mission Control:
 
 - Your phone number must be assigned to your Call Control connection.
-- If your account is new (trust level D60), add the target number (+18054398008) under Numbers > Verified Numbers to allow outbound calls.
+- If your account is new (trust level D60), you must transition to a 'Paid' plan in order to be able to make outbound calls to unverified numbers. The transition is free and you still have a pay-as-you-go API.
 
 ### 4. Start ngrok (Terminal 1)
 
@@ -61,7 +61,7 @@ In Telnyx Mission Control:
 ngrok http 80
 ```
 
-Copy the forwarding URL (e.g. `https://xxxx.ngrok-free.app`) and set it as `WEBHOOK_BASE_URL` in your `.env` file.
+Copy the forwarding URL (e.g. `https://example.ngrok-free.dev`) and set it as `WEBHOOK_BASE_URL` in your `.env` file.
 
 ### 5. Start the server (Terminal 2)
 
