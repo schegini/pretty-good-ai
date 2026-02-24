@@ -9,7 +9,7 @@ Scenarios cover happy paths, edge cases, and stress tests.
 """
 
 SCENARIOS = [
-    
+
     # HAPPY PATHS
     {
         "id": "new_appointment",
@@ -119,7 +119,7 @@ SCENARIOS = [
             "a follow-up appointment for your ankle. Then mid-conversation, suddenly "
             "remember that you also need a prescription refill for Meloxicam 15mg — "
             "switch topics abruptly. Then ask about your insurance on file — you want "
-            "to confirm it's still Cigna. Be a bit impatient throughout. "
+            "to confirm it's still Cigna. Be a bit impatient throughout and talk fast. "
             "Date of birth: July 30, 1978. Phone: 555-0567."
         ),
         "opening_line": (
@@ -133,7 +133,9 @@ SCENARIOS = [
             "You are David Lee. You think you may have fractured your wrist — you fell "
             "hard playing basketball and it's swollen and very painful. You want to be "
             "seen today if possible. If they can't see you today, ask if you should go "
-            "to the ER or urgent care instead. Be anxious but not panicking. "
+            "to the ER or urgent care instead. Be anxious and panicking. Cut them off  "
+            "when they start asking for info and say 'I just really need to be seen  --"
+            "today, please!'"
             "Date of birth: December 5, 1990. Phone: 555-0678."
         ),
         "opening_line": (
