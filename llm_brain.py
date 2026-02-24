@@ -27,7 +27,7 @@ async def get_patient_response(
     messages.append({"role": "user", "content": f"[Office agent says]: {agent_message}"})
 
     response = await client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-4o-realtime-preview",
         messages=messages,
         max_tokens=150,
         temperature=0.8,
