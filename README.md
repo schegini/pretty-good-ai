@@ -1,49 +1,86 @@
 # Voice Bot: AI Patient Simulator
 
-An automated voice bot that calls a medical office's AI receptionist, simulates realistic patient scenarios, and identifies bugs in the agent's responses. Built for the Pretty Good AI engineering assessment.
+Automated voice bot that calls the Pivot Point Orthopedics AI receptionist, simulates realistic patient scenarios, and identifies bugs in the agent's responses. Built for the Pretty Good AI engineering assessment.
 
 ## Architecture
 
-The system bridges **Telnyx Call Control** (telephony) with **OpenAI's Realtime API** (native speech-to-speech model) to create low-latency, natural-sounding voice conversations.
+The system bridges Telnyx Call Control (telephony) with OpenAI's Realtime API (native speech-to-speech model) to create low-latency, natural-sounding voice conversations.
 
-When a call is placed, Telnyx connects it and streams raw audio (G.711 μ-law, 8kHz) to our FastAPI server via WebSocket. The server opens a parallel WebSocket to OpenAI's Realtime API, configured with the same `g711_ulaw` format — so audio passes through with **zero format conversion**. The Realtime model hears the agent's voice, processes it natively as audio (not text), and generates a spoken patient response that streams back through Telnyx onto the call. OpenAI's server-side VAD handles turn detection automatically.
+When a call is placed, Telnyx connects it and streams raw audio (G.711 u-law, 8kHz) to a FastAPI server via WebSocket. The server opens a parallel WebSocket to OpenAI's Realtime API, configured with the same g711_ulaw format, so audio passes through with zero format conversion. The Realtime model hears the agent's voice, processes it natively as audio (not text), and generates a spoken patient response that streams back through Telnyx onto the call. OpenAI's server-side VAD handles turn detection automatically.
 
-Key design choices: **Realtime API over text-based STT→LLM→TTS** for dramatically lower latency and more natural conversation flow (the model reasons about tone/pacing, not just words). **g711_ulaw end-to-end** to avoid audio transcoding overhead. **Telnyx over Twilio** for lower per-minute costs. Transcripts come free from the Realtime API's built-in Whisper transcription of both sides.
+Key design choices:
+
+- Realtime API over text-based STT/LLM/TTS for dramatically lower latency and more natural conversation flow. The model reasons about tone and pacing, not just words.
+- g711_ulaw end-to-end to avoid audio transcoding overhead. Telnyx streams PCMU natively, and the Realtime API accepts it directly.
+- RTP bidirectional streaming mode on Telnyx so raw audio (not MP3) can be sent back to the call.
+- Telnyx over Twilio for lower per-minute telephony costs.
+- Transcripts are captured from the Realtime API's built-in Whisper transcription of both audio tracks.
 
 ## Setup
 
+### Prerequisites
+
+- Python 3.10+
+- A Telnyx account with a purchased phone number assigned to a Call Control connection
+- An OpenAI API key with Realtime API access
+- ngrok installed and authenticated
+
 ### 1. Install dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 2. Configure environment
+
 ```bash
 cp .env.example .env
-# Fill in: TELNYX_API_KEY, TELNYX_CONNECTION_ID, TELNYX_FROM_NUMBER,
-#          OPENAI_API_KEY, WEBHOOK_BASE_URL
 ```
 
-### 3. Start ngrok (separate terminal)
-```bash
-ngrok http 8000
-```
-Update `WEBHOOK_BASE_URL` in `.env` with your ngrok URL.
+Fill in all values. Phone numbers must be in E.164 format with no dashes or spaces (e.g. `+13412226273`, not `+1-341-222-6273`).
 
-### 4. Start the server
+| Variable | Description |
+|----------|-------------|
+| TELNYX_API_KEY | Telnyx v2 API key (starts with KEY...) |
+| TELNYX_CONNECTION_ID | ID of your Call Control connection in Mission Control |
+| TELNYX_FROM_NUMBER | Your Telnyx phone number in E.164 format |
+| TARGET_NUMBER | Test line to call (default: +18054398008) |
+| OPENAI_API_KEY | OpenAI API key with Realtime API access |
+| WEBHOOK_BASE_URL | Your ngrok public URL, no trailing slash |
+
+### 3. Telnyx configuration
+
+In Telnyx Mission Control:
+
+- Your phone number must be assigned to your Call Control connection.
+- If your account is new (trust level D60), add the target number (+18054398008) under Numbers > Verified Numbers to allow outbound calls.
+
+### 4. Start ngrok (Terminal 1)
+
 ```bash
-uvicorn server:app --host 0.0.0.0 --port 8000
+ngrok http 80
 ```
 
-### 5. Make calls (separate terminal)
+Copy the forwarding URL (e.g. `https://xxxx.ngrok-free.app`) and set it as `WEBHOOK_BASE_URL` in your `.env` file.
+
+### 5. Start the server (Terminal 2)
+
 ```bash
-# List scenarios
+uvicorn server:app --host 0.0.0.0 --port 80
+```
+
+The server prints a startup summary showing your config. Check for any warnings about missing variables.
+
+### 6. Make calls (Terminal 3)
+
+```bash
+# List available scenarios
 python make_call.py
 
 # Run a single scenario
 python make_call.py 0
 
-# Run all 10 scenarios
+# Run all 12 scenarios sequentially
 python make_call.py all
 
 # Custom delay between calls (default 30s)
@@ -52,52 +89,66 @@ python make_call.py all --delay 45
 
 ## Scenarios
 
-| # | ID | Name | What It Tests |
-|---|-----|------|---------------|
-| 0 | simple_scheduling | Simple Scheduling | Basic appointment booking |
-| 1 | reschedule | Reschedule | Modifying an existing appointment |
-| 2 | medication_refill | Medication Refill | Refill request handling |
-| 3 | office_hours_question | Office Hours Q&A | Multi-question informational call |
-| 4 | weekend_edge_case | Weekend Edge Case | Booking on a closed day (Sunday) |
-| 5 | cancel_appointment | Cancel Appointment | Cancellation flow |
-| 6 | vague_symptoms | Vague/Unclear Request | Rambling, confused patient |
-| 7 | interruption_test | Interruption Test | Topic switching mid-call |
-| 8 | after_hours_call | Emergency Question | Urgent dental issue |
-| 9 | multiple_requests | Multiple Requests | Several needs in one call |
+All scenarios target Pivot Point Orthopedics, which supports appointments, insurance updates, and prescription refills.
+
+| # | Name | What It Tests |
+|---|------|---------------|
+| 0 | New Appointment (Knee Pain) | Basic appointment booking |
+| 1 | Reschedule Existing Appointment | Modifying an existing appointment |
+| 2 | Prescription Refill (Naproxen) | Refill request handling |
+| 3 | Update Insurance Information | Insurance update flow |
+| 4 | General Questions | Office hours, insurance acceptance, new patients |
+| 5 | Sunday Appointment Request | Booking on a closed day |
+| 6 | Vague, Rambling Patient | Unclear/confused patient |
+| 7 | Mid-Call Topic Switch | Abrupt topic changes |
+| 8 | Urgent Injury | Possible fracture, needs same-day care |
+| 9 | Contradictory Information | Patient gives inconsistent details |
+| 10 | Cancel Then Immediately Rebook | Tests state management after cancellation |
+| 11 | Wrong Type of Doctor | Calling orthopedics for a dental cleaning |
 
 ## Project Structure
 
 ```
-├── server.py          # FastAPI — webhooks, WebSocket media, call triggers
-├── bridge.py          # OpenAI Realtime API ↔ Telnyx audio bridge
-├── telnyx_api.py      # Telnyx Call Control REST wrapper
-├── scenarios.py       # 10 patient test scenarios
-├── config.py          # Environment config
-├── make_call.py       # CLI to trigger calls
-├── transcripts/       # Auto-saved call transcripts
-├── requirements.txt
-└── .env.example
+server.py          FastAPI server: webhooks, WebSocket media, call triggers
+bridge.py          OpenAI Realtime API <-> Telnyx audio bridge
+telnyx_api.py      Telnyx Call Control REST wrapper
+scenarios.py       12 patient test scenarios
+config.py          Environment config
+make_call.py       CLI to trigger calls
+transcripts/       Auto-saved call transcripts
+requirements.txt
+.env.example
 ```
 
 ## How It Works
 
 ```
-┌─────────────┐    audio (μ-law)    ┌──────────────┐    audio (μ-law)    ┌─────────────────┐
-│  Telnyx     │ ◄────────────────►  │  FastAPI     │ ◄────────────────►  │ OpenAI Realtime │
-│ (phone call)│    WebSocket        │  Server      │    WebSocket        │  API (patient)  │
-└─────────────┘                     └──────────────┘                     └─────────────────┘
-                                          │
-                                          ▼
-                                    transcripts/
+Telnyx           FastAPI           OpenAI Realtime
+(phone call)     Server            API (patient)
+    |                |                   |
+    |-- call.answered -->|               |
+    |                |-- stream_start -->|
+    |<-- WebSocket audio stream -------->|
+    |                |                   |
+    |  agent audio ->|-> g711_ulaw ----->|
+    |                |                   |
+    |                |<-- g711_ulaw -----|  (patient response)
+    |<- play audio --|                   |
+    |                |                   |
+    |  (transcripts captured via Whisper)|
+    |                |                   |
+    |-- call.hangup ->|                  |
+    |                |-- save transcript |
 ```
 
-## Environment Variables
+## Troubleshooting
 
-| Variable | Description |
-|----------|-------------|
-| `TELNYX_API_KEY` | Telnyx API v2 key |
-| `TELNYX_CONNECTION_ID` | Telnyx connection/app ID |
-| `TELNYX_FROM_NUMBER` | Your Telnyx phone number (E.164) |
-| `TARGET_NUMBER` | Test line to call  |
-| `OPENAI_API_KEY` | OpenAI API key (needs Realtime API access) |
-| `WEBHOOK_BASE_URL` | Public ngrok URL |
+**No webhook events in server logs:** ngrok is not forwarding to your server. Make sure ngrok is running and pointing to the correct port. Check the ngrok terminal for incoming POST requests.
+
+**422 from Telnyx:** Phone numbers must be in E.164 format with no dashes or spaces.
+
+**403 from Telnyx:** Either the API key is wrong, the phone number is not assigned to the connection, or the account trust level blocks calls to unverified numbers.
+
+**Call connects but no audio from bot:** Check that the OpenAI Realtime WebSocket connected (look for "Realtime session created" in server logs). Verify your OpenAI key has Realtime API access.
+
+**ngrok returning HTML instead of forwarding:** The free tier browser interstitial can intercept webhook POSTs. Use `ngrok http 80` from the command line rather than a cloud endpoint.
