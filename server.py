@@ -24,10 +24,40 @@ from config import (
     TELNYX_CONNECTION_ID,
     TELNYX_FROM_NUMBER,
     WEBHOOK_URL,
+    OPENAI_API_KEY,
 )
 from scenarios import SCENARIOS
 
 app = FastAPI(title="Voice Bot — Patient Simulator (Realtime)")
+
+
+@app.on_event("startup")
+async def startup_check():
+    """Validate config on startup."""
+    print("\n" + "=" * 60)
+    print("  Voice Bot — Patient Simulator (Realtime API)")
+    print("=" * 60)
+    issues = []
+    if not TELNYX_FROM_NUMBER or TELNYX_FROM_NUMBER == "+1XXXXXXXXXX":
+        issues.append("TELNYX_FROM_NUMBER not set")
+    else:
+        print(f"  From number:  {TELNYX_FROM_NUMBER}")
+    if not TELNYX_CONNECTION_ID or "your_" in (TELNYX_CONNECTION_ID or ""):
+        issues.append("TELNYX_CONNECTION_ID not set")
+    if not WEBHOOK_URL or "your-domain" in WEBHOOK_URL:
+        issues.append("WEBHOOK_BASE_URL not set")
+    else:
+        print(f"  Webhook URL:  {WEBHOOK_URL}")
+        print(f"  Stream URL:   {STREAM_URL}")
+    if not OPENAI_API_KEY or "your_" in (OPENAI_API_KEY or ""):
+        issues.append("OPENAI_API_KEY not set")
+    print(f"  Target:       {TARGET_NUMBER}")
+    print(f"  Scenarios:    {len(SCENARIOS)}")
+    if issues:
+        print(f"\n  ⚠ CONFIG ISSUES:")
+        for i in issues:
+            print(f"    - {i}")
+    print("=" * 60 + "\n")
 
 # In-memory state
 # call_control_id → {scenario, bridge, ...}
@@ -47,12 +77,16 @@ async def trigger_call(scenario_index: int):
     scenario = SCENARIOS[scenario_index]
     print(f"\n Placing call — Scenario: {scenario['name']}")
 
-    result = await telnyx_api.create_call(
-        to=TARGET_NUMBER,
-        from_=TELNYX_FROM_NUMBER,
-        connection_id=TELNYX_CONNECTION_ID,
-        webhook_url=WEBHOOK_URL,
-    )
+    try:
+        result = await telnyx_api.create_call(
+            to=TARGET_NUMBER,
+            from_=TELNYX_FROM_NUMBER,
+            connection_id=TELNYX_CONNECTION_ID,
+            webhook_url=WEBHOOK_URL,
+        )
+    except Exception as e:
+        print(f"   Telnyx call failed: {e}")
+        return JSONResponse({"error": f"Telnyx API error: {str(e)}"}, 500)
 
     call_control_id = result["call_control_id"]
     calls[call_control_id] = {
@@ -69,6 +103,11 @@ async def trigger_call(scenario_index: int):
 @app.get("/scenarios")
 async def list_scenarios():
     return [{"index": i, "id": s["id"], "name": s["name"]} for i, s in enumerate(SCENARIOS)]
+
+
+@app.get("/")
+async def health():
+    return {"status": "ok", "scenarios": len(SCENARIOS), "active_calls": len(calls)}
 
 
 # Telnyx webhook (HTTP)
@@ -91,10 +130,10 @@ async def webhook(request: Request):
     elif event_type == "call.hangup":
         await _on_hangup(call_control_id, payload)
 
-    elif event_type == "call.streaming.started":
+    elif event_type == "streaming.started":
         print(f"  → Media streaming started")
 
-    elif event_type == "call.streaming.stopped":
+    elif event_type == "streaming.stopped":
         print(f"  → Media streaming stopped")
 
     return JSONResponse({"status": "ok"})
@@ -107,7 +146,7 @@ async def _on_answered(call_control_id: str, payload: dict):
         print(f"  No state for call {call_control_id[:16]}, skipping")
         return
 
-    print(f"  → Call answered — starting media stream to {STREAM_URL}")
+    print(f"  Call answered — starting media stream to {STREAM_URL}")
     await telnyx_api.stream_start(call_control_id, STREAM_URL)
 
     # Set a max-duration timer so calls don't run forever
@@ -184,7 +223,7 @@ async def media_stream(ws: WebSocket):
                     state["bridge"] = bridge
                     await bridge.connect()
                 else:
-                    print(f"[WS] ⚠ No matching call state found!")
+                    print(f"[WS] No matching call state found!")
 
             elif event == "media" and bridge:
                 # Forward audio from agent → OpenAI Realtime
@@ -226,4 +265,4 @@ def _save_transcript(bridge: RealtimeBridge):
     with open(filepath, "w") as f:
         f.write("\n".join(lines))
 
-    print(f"  💾 Transcript saved: {filepath}")
+    print(f"  Transcript saved: {filepath}")
