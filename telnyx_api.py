@@ -13,6 +13,8 @@ HEADERS = {
 async def _post(path: str, json: dict) -> dict:
     async with httpx.AsyncClient() as client:
         resp = await client.post(f"{BASE}{path}", headers=HEADERS, json=json, timeout=30)
+        if resp.status_code >= 400:
+            print(f"  Telnyx API error {resp.status_code}: {resp.text}")
         resp.raise_for_status()
         return resp.json()
 
@@ -29,10 +31,16 @@ async def create_call(to: str, from_: str, connection_id: str, webhook_url: str)
 
 
 async def stream_start(call_control_id: str, stream_url: str) -> dict:
-    """Start bidirectional audio streaming on a call."""
+    """Start bidirectional audio streaming on a call.
+    
+    Uses RTP bidirectional mode with PCMU (G.711 μ-law) codec so we can
+    send raw g711_ulaw audio from OpenAI Realtime back to the call.
+    """
     return await _post(f"/calls/{call_control_id}/actions/streaming_start", {
         "stream_url": stream_url,
         "stream_track": "inbound_track",
+        "stream_bidirectional_mode": "rtp",
+        "stream_bidirectional_codec": "PCMU",
     })
 
 
