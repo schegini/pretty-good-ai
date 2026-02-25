@@ -1,7 +1,8 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+# Load .env from project root (one level up from src/)
+load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
 
 TELNYX_API_KEY = os.getenv("TELNYX_API_KEY")
 TELNYX_CONNECTION_ID = os.getenv("TELNYX_CONNECTION_ID")
@@ -16,6 +17,7 @@ WEBHOOK_URL = f"{WEBHOOK_BASE_URL}/webhook"
 STREAM_URL = f"{WEBHOOK_BASE_URL.replace('https://', 'wss://').replace('http://', 'ws://')}/media-stream"
 
 # OpenAI Realtime model
+# GA model: "gpt-realtime" | Beta/preview: "gpt-4o-realtime-preview"
 REALTIME_MODEL = "gpt-4o-realtime-preview"
 
 # Call settings
