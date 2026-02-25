@@ -1,0 +1,60 @@
+Scenario: New Appointment — Knee Pain
+Started:  2026-02-24T04:58:41.694379
+Turns:    28
+============================================================
+
+[PATIENT]: Hi, I'd like to schedule an appointment. I've been having some knee pain after a running injury.
+
+[AGENT]: Para español, oprima el 2.
+
+[AGENT]: Thank you for calling.
+
+[PATIENT]: My name is Sarah Johnson. I was hoping to get an appointment sometime next week in the morning, if possible.
+
+[AGENT]: Got it, Sarah. Before we can schedule your appointment, would you like to create a demo patient profile? I just need your first and last name to get started.
+
+[PATIENT]: Sure, my first name is Sarah, and my last name is Johnson.
+
+[AGENT]: Your patient profile has been created successfully and your date of birth is July 4, 2000 for demo purposes. How may I help you today?
+
+[PATIENT]: Actually, my date of birth is March 15, 1991. I’m calling because I’ve been having knee pain after a running injury, and I’d like to schedule an appointment.
+
+[PATIENT]: I don’t have a specific provider in mind, so checking all available providers for next week in the mornings would be great.
+
+[AGENT]: Got it, Sara. For your knee pain after a running injury, we can schedule a new patient consultation. Would you prefer to see a specific provider or should I check all available providers for next week in the morning?
+
+[AGENT]: Let me check morning availability for a new patient consultation with any provider next week. One moment while I fetch the options.
+
+[PATIENT]: Thank you, I appreciate it.
+
+[AGENT]: And it looks like they're...
+
+[PATIENT]: Mornings generally work best for me next week, so if there’s something around that time, that would be perfect.
+
+[AGENT]: It looks like there aren't any morning appointments available next week for a new patient consultation. Would you like me to check for the next available morning slot after next week, or are you open to afternoons as well?
+
+[PATIENT]: I’d prefer mornings, so please check for the next available morning slot after next week.
+
+[PATIENT]: Great, thank you so much.
+
+[AGENT]: Let me check for the next available morning appointment after next week for a new patient consultation. One moment while I look that up.
+
+[PATIENT]: March 10th works well for me. Let’s go with the 9 a.m. slot, if that’s still available.
+
+[AGENT]: The next available morning appointments are on Tuesday, March 10th, with Dr. Adam Bricker. The times are 9, 9.45, and 10.30 a.m. Would you like to book one of these slots?
+
+[AGENT]: Got it. To confirm, you'd like to book a new patient consultation with Dr. Adam Bricker on Tuesday, March 10th at 9 a.m. for your knee pain. Is that correct?
+
+[PATIENT]: Yes, that’s correct. Thank you so much for your help.
+
+[PATIENT]: Yes, a text reminder would be great.
+
+[AGENT]: Booking your appointment now, please hold for just a moment while I confirm your spot. Your appointment is confirmed for Tuesday, March 10th at 9 a.m. with Dr. Adam Bricker. Please bring your government-issued photo ID and your insurance card to your visit. Would you like a text reminder for your appointment?
+
+[AGENT]: You'll get a text reminder soon at your number ending in 6273. If you need anything else, just let me know.
+
+[PATIENT]: Actually, my number ends in 0142. Could you update that, please?
+
+[PATIENT]: Got it, I’ll mention it when I come in. Thanks again for your help.
+
+[AGENT]: Let me confirm your phone number should be updated to end in 0142. I'll make a note of this for the clinic, but I can't update it directly. Please mention this change at your appointment or call the clinic to update your records.
