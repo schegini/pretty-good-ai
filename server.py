@@ -24,7 +24,6 @@ from config import (
     TELNYX_CONNECTION_ID,
     TELNYX_FROM_NUMBER,
     WEBHOOK_URL,
-    OPENAI_API_KEY,
 )
 from scenarios import SCENARIOS
 
@@ -34,9 +33,9 @@ app = FastAPI(title="Voice Bot — Patient Simulator (Realtime)")
 @app.on_event("startup")
 async def startup_check():
     """Validate config on startup."""
-    print("\n" + "=" * 60)
+    print()
     print("  Voice Bot — Patient Simulator (Realtime API)")
-    print("=" * 60)
+    print()
     issues = []
     if not TELNYX_FROM_NUMBER or TELNYX_FROM_NUMBER == "+1XXXXXXXXXX":
         issues.append("TELNYX_FROM_NUMBER not set")
@@ -54,16 +53,16 @@ async def startup_check():
     print(f"  Target:       {TARGET_NUMBER}")
     print(f"  Scenarios:    {len(SCENARIOS)}")
     if issues:
-        print(f"\n  ⚠ CONFIG ISSUES:")
+        print(f"\n  CONFIG ISSUES:")
         for i in issues:
             print(f"    - {i}")
-    print("=" * 60 + "\n")
+    print()
 
 # In-memory state
 # call_control_id → {scenario, bridge, ...}
 calls: dict[str, dict] = {}
 
-TRANSCRIPTS_DIR = "transcripts"
+TRANSCRIPTS_DIR = os.path.join(os.path.dirname(__file__), "..", "transcripts")
 os.makedirs(TRANSCRIPTS_DIR, exist_ok=True)
 
 
@@ -122,7 +121,7 @@ async def webhook(request: Request):
     print(f"[EVENT] {event_type}")
 
     if event_type == "call.initiated":
-        print(f"  → Call initiated to {payload.get('to')}")
+        print(f"  Call initiated to {payload.get('to')}")
 
     elif event_type == "call.answered":
         await _on_answered(call_control_id, payload)
@@ -131,22 +130,22 @@ async def webhook(request: Request):
         await _on_hangup(call_control_id, payload)
 
     elif event_type == "streaming.started":
-        print(f"  → Media streaming started")
+        print(f"  Media streaming started")
 
     elif event_type == "streaming.stopped":
-        print(f"  → Media streaming stopped")
+        print(f"  Media streaming stopped")
 
     return JSONResponse({"status": "ok"})
 
 
 async def _on_answered(call_control_id: str, payload: dict):
-    """Call answered → start media streaming."""
+    """Call answered, start media streaming."""
     state = calls.get(call_control_id)
     if not state:
         print(f"  No state for call {call_control_id[:16]}, skipping")
         return
 
-    print(f"  Call answered — starting media stream to {STREAM_URL}")
+    print(f"  Call answered; starting media stream to {STREAM_URL}")
     await telnyx_api.stream_start(call_control_id, STREAM_URL)
 
     # Set a max-duration timer so calls don't run forever
@@ -156,7 +155,7 @@ async def _on_answered(call_control_id: str, payload: dict):
 
 
 async def _on_hangup(call_control_id: str, payload: dict):
-    """Call ended → save transcript, clean up."""
+    """Call ended; save transcript, clean up."""
     state = calls.pop(call_control_id, None)
     if not state:
         return
@@ -169,7 +168,7 @@ async def _on_hangup(call_control_id: str, payload: dict):
         _save_transcript(bridge)
         await bridge.close()
 
-    print(f"  → Call ended and cleaned up")
+    print(f"  Call ended and cleaned up")
 
 
 async def _call_timeout(call_control_id: str, seconds: int):
@@ -201,7 +200,6 @@ async def media_stream(ws: WebSocket):
                 print("[WS] Stream connected event received")
 
             elif event == "start":
-                # Telnyx tells us which call this stream belongs to
                 start_info = data.get("start", {})
                 call_control_id = start_info.get("call_control_id", "")
                 stream_id = start_info.get("stream_id", "")
@@ -210,8 +208,7 @@ async def media_stream(ws: WebSocket):
 
                 state = calls.get(call_control_id)
                 if not state:
-                    # Fallback: try to find by partial match (Telnyx sometimes
-                    # sends a slightly different ID format)
+                    # Fallback: try to find by partial match (Telnyx sometimes sends a slightly different ID format)
                     for cid, s in calls.items():
                         if cid.startswith(call_control_id[:16]) or call_control_id.startswith(cid[:16]):
                             state = s
@@ -255,8 +252,7 @@ def _save_transcript(bridge: RealtimeBridge):
     lines = [
         f"Scenario: {scenario['name']}",
         f"Started:  {bridge.started_at}",
-        f"Turns:    {len(bridge.transcript)}",
-        "=" * 60,
+        f"Turns:    {len(bridge.transcript)}"
     ]
     for entry in bridge.transcript:
         role = "PATIENT" if entry["role"] == "bot" else "AGENT"
