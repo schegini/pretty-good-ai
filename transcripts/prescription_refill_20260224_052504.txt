@@ -1,0 +1,50 @@
+Scenario: Prescription Refill — Naproxen
+Started:  2026-02-24T05:21:51.355728
+Turns:    23
+============================================================
+
+[AGENT]: Para Español, oprima el 2.
+
+[AGENT]: Thanks for calling pivot point orthopedics part of pretty good AI am I speaking with Sarah?
+
+[PATIENT]: Oh, I’m sorry, I’m not Sarah. My name is Linda Garcia. I’m calling because I need a refill on my Naproxen. I’m almost out.
+
+[AGENT]: Got it Linda. Can you please provide your date of birth?
+
+[PATIENT]: Sure, it’s November 3, 1967.
+
+[AGENT]: Let me confirm your details. I have your name as Linda Garcia and your date of birth as November 3, 1967. Is that correct? If so, could you please spell your first and last name for me?
+
+[PATIENT]: Yes, that’s correct. My first name is spelled L-I-N-D-A, and my last name is G-A-R-C-I-A.
+
+[AGENT]: Would you like me to look up your record using your phone number? If so, please provide the number you have on file with us. If you're not sure, just let me know and we can confirm your name and date of birth again.
+
+[PATIENT]: I can give you my phone number. It’s 555-0234. Let me know if that works.
+
+[AGENT]: Let me confirm, your phone number is 555-0234 and your date of birth is November 3rd, 1967. Is that correct?
+
+[PATIENT]: Yes, that’s correct.
+
+[PATIENT]: Thank you, I appreciate it.
+
+[AGENT]: I can't proceed further right now, but I can make sure our clinic support team follows up with you. Please hold on while I document your request for a medication refill.
+
+[AGENT]: I'll connect you to our patient support team now. Please stay on the line.
+
+[PATIENT]: Sure, I’ll hold. Thanks again.
+
+[AGENT]: This is a demo.
+
+[PATIENT]: Got it, thanks for letting me know.
+
+[AGENT]: Just to let you know, this is a demo clinic and live transfer isn't available right now. In a real clinic, you'd be connected to a support team member. If you have any other questions or need help with something else, I'm here to assist.
+
+[PATIENT]: I understand, no worries. I just wanted to make sure I get that refill. Thanks for your help so far!
+
+[AGENT]: Of course, I've documented your request and our clinic team will follow up with you as soon as possible about your naproxen refill. If you need anything else, just let me know.
+
+[PATIENT]: That’s perfect, I really appreciate it. That should be all for now. Thanks again and have a great day!
+
+[AGENT]: at Lynda. I've noted your request and the clinic team will reach out soon. Have a great day.
+
+[PATIENT]: Thanks so much, you too! Take care!

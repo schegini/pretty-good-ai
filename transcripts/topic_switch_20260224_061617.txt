@@ -1,0 +1,42 @@
+Scenario: Edge Case — Mid-Call Topic Switch
+Started:  2026-02-24T06:12:16.124444
+Turns:    19
+============================================================
+
+[AGENT]: Thanks for calling Pivot Point Orthopedics, part of pretty good AI. Am I speaking with Sarah?
+
+[PATIENT]: Hola, necesito programar una cita de seguimiento para mi tobillo lo más pronto posible, por favor.
+
+[AGENT]: Hi, this is Pivot Point Orthopedics. Is this Sarah? How may I help you today?
+
+[PATIENT]: No, soy Karen White. Necesito una cita de seguimiento para mi tobillo lo más pronto posible.
+
+[PATIENT]: No, yo soy Karen White, estoy llamando para mí. Solo quiero agendar mi cita de seguimiento para el tobillo.
+
+[AGENT]: Got it. Can you tell me a bit more about what you mean by cutting white? Are you calling for yourself or someone else?
+
+[AGENT]: Understood. How can I help you today? Are you looking for information about the clinic, an appointment, or something else?
+
+[PATIENT]: Quiero agendar esa cita de seguimiento, por favor. Creo que me tocaba volver esta semana o la que viene. Ah, y también necesito un refill de mi receta de Meloxicam de 15 mg. Gracias.
+
+[AGENT]: I'm here to help! Please let me know what you need today.
+
+[PATIENT]: Sí, necesito agendar mi cita de seguimiento para el tobillo y que me receten otra vez Meloxicam de 15 mg. Y también quería confirmar mi seguro. ¿Tienen todavía Cigna en el sistema?
+
+[AGENT]: How can I assist you today?
+
+[PATIENT]: Por favor, necesito agendar una cita de seguimiento para mi tobillo, y también un refill de mi receta de Meloxicam de 15 mg. Además, quiero confirmar si mi seguro sigue siendo Cigna.
+
+[AGENT]: How may I help you today?
+
+[PATIENT]: Quiero agendar una cita de seguimiento para el tobillo y también un refill de mi Meloxicam de 15 mg. Además, necesito confirmar que todavía tienen Cigna como mi seguro en el sistema.
+
+[AGENT]: What could I help you with today?
+
+[PATIENT]: Necesito agendar mi cita de seguimiento para el tobillo, lo antes posible. Y también necesito un refill de mi receta, Meloxicam 15 mg. Ah, y quiero confirmar que mi seguro sigue siendo Cigna en su sistema.
+
+[AGENT]: If you need help with appointments, medications, or have a question about the clinic, just let me know.
+
+[PATIENT]: Sí, por favor, necesito la cita de seguimiento para mi tobillo y un refill de mi Meloxicam de 15 mg. Y por último, ¿pueden confirmar si mi seguro en el sistema sigue siendo Cigna? Gracias.
+
+[AGENT]: Yes, I'm here. How can I assist you?

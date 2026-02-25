@@ -1,0 +1,38 @@
+Scenario: Reschedule Existing Appointment
+Started:  2026-02-24T05:15:08.843696
+Turns:    17
+============================================================
+
+[AGENT]: Para español, oprima el 2.
+
+[AGENT]: Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with Sarah?
+
+[PATIENT]: Oh, I’m actually a patient. My name’s Mike Chen, and I’m calling because I need to reschedule my appointment. I have one this Thursday at 2pm, but I’ve got a work conflict.
+
+[AGENT]: Got it, Mike. Can you please provide your data first?
+
+[PATIENT]: Sure, it’s June 22, 1980.
+
+[AGENT]: Let me confirm your name is Mike Chen and your date of birth is June 22nd 1980 is that correct? If so, could you please spell your first and last name for me?
+
+[PATIENT]: Yes, that’s correct. My first name is spelled M-I-K-E, and my last name is C-H-E-N.
+
+[PATIENT]: Sure, my phone number on file should be 555-0198.
+
+[AGENT]: Would you like me to look up your record using your phone number? If so, please provide the number you have on file with us. If you're not sure, just let me know and we can confirm your name and date of birth again.
+
+[PATIENT]: Yes, that’s correct.
+
+[AGENT]: Let me confirm I have your phone number as 5550198 and your date of birth is June 22nd, 1980. Is that correct? Yes.
+
+[AGENT]: I can't pull up your record right now, so I can't help with rescheduling at the moment. I'll make sure our clinic support team follows up with you. Please hold while I document this for them.
+
+[PATIENT]: All right, no problem. I appreciate that.
+
+[AGENT]: Thank you.
+
+[PATIENT]: Thank you. I’ll wait to hear back from the support team. Thanks again!
+
+[PATIENT]: Thanks so much, you too! Bye!
+
+[AGENT]: Got it, Mike. The clinic support team will follow up with you as soon as they can to help reschedule your appointment. Have a good day!

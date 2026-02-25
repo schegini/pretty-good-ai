@@ -1,0 +1,26 @@
+Scenario: Edge Case — Urgent Injury
+Started:  2026-02-24T06:26:56.431796
+Turns:    11
+============================================================
+
+[AGENT]: Para español, oprima el 2.
+
+[AGENT]: Thanks for calling Pivot Point Orthopaedics, part of Pretty Good AI. My speakie was Sarah.
+
+[PATIENT]: Hi, I think I might have fractured my wrist. I fell pretty hard, and it's really swollen and painful. Can someone see me today, please?
+
+[AGENT]: First, can you please tell me your date of birth? I'll check how soon we can get you in.
+
+[PATIENT]: It's December 5, 1990. Please, I just really need to be seen today if possible!
+
+[AGENT]: Thanks, Sarah. For a possible wrist fracture, you'll need a new patient consultation. Let me check for the earliest available appointment today. I'm not seeing any openings for a new patient consultation today or in the next week. Would you like to look for the soonest available appointment after that or try a different type of visit?
+
+[PATIENT]: Oh no, it's really painful and I need to be seen today. Should I go to the ER or urgent care instead? I don’t think I can wait that long.
+
+[PATIENT]: Okay, thank you so much. I’ll head to urgent care right now. I appreciate the help. Goodbye.
+
+[AGENT]: If your wrist is very swollen, painful, and you suspect a fracture, it's best to go to urgent care or the emergency room today. They can do an x-ray and treat you right away. If you need follow-up care after that, we can help schedule it.
+
+[PATIENT]: Thanks again, I will. Goodbye.
+
+[AGENT]: Understood, Sarah. Take care and get seen as soon as you can. If you need follow-up care, just call us back. Goodbye!

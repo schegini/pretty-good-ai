@@ -1,0 +1,34 @@
+Scenario: Update Insurance Information
+Started:  2026-02-24T05:28:11.555862
+Turns:    15
+============================================================
+
+[AGENT]: Para Español, oprima el 2.
+
+[AGENT]: Thanks for calling pivot point orthopedics part of pretty good AI am I speaking with Sarah?
+
+[PATIENT]: Hi, this is James Wilson. I need to update my insurance information. I recently got new coverage.
+
+[AGENT]: Got it, James. Can you please provide your date of birth?
+
+[PATIENT]: Sure, it's August 14, 1985.
+
+[AGENT]: Let me confirm, your full name is James Wilson, and your date of birth is August 14th, 1985. Is that correct? If so, could you please spell your first and last name for me?
+
+[PATIENT]: Yes, that's correct. My first name is James, J-A-M-E-S, and my last name is Wilson, W-I-L-S-O-N.
+
+[AGENT]: Let me confirm, your phone number is 341-222-6273 and your date of birth is August 14th, 1985? Is that correct?
+
+[PATIENT]: Actually, my phone number is 555-0310. And yes, my date of birth is correct.
+
+[AGENT]: I can't update your insurance right now, but I'll make sure our clinic support team follows up with you. Please hold on while I document your request.
+
+[PATIENT]: Sure, that sounds good. Thanks for your help.
+
+[AGENT]: Live transfer isn't available right now since this is a demo clinic, but your request to update insurance is noted. The clinic support team will follow up with you as soon as possible. Is there anything else I can help you with today?
+
+[PATIENT]: No, that should be all for now. I just want to make sure everything’s in place before my appointment. Thank you!
+
+[PATIENT]: Thanks so much. Take care!
+
+[AGENT]: Go ahead. The clinic team will reach out to help update your insurance. If you have any other questions, just give us a call. Have a good day!

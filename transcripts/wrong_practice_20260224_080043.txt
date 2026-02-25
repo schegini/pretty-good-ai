@@ -1,0 +1,20 @@
+Scenario: Wrong Type of Doctor
+Started:  2026-02-24T07:59:41.961604
+Turns:    8
+============================================================
+
+[AGENT]: Para Español, oprima el 2.
+
+[PATIENT]: Oh, hi! My name’s Beth Cooper. I was hoping to schedule a teeth cleaning appointment, please.
+
+[AGENT]: Thanks for calling pivot point orthopedics part of pretty good AI my speaking with Sarah
+
+[AGENT]: Pivot Point Orthopedics focuses on joint, muscle, and bone care. We don't offer dental or teeth cleaning services.
+
+[AGENT]: Is there something else I can help you with related to orthopedic care or physical therapy?
+
+[PATIENT]: Oh my goodness, I am so sorry! I must have dialed the wrong number. That’s a bit embarrassing. Before I go, do you happen to know any good dentists in the area?
+
+[AGENT]: No worries at all. I don't have information about local dentists. If you ever need help with orthopedic care, feel free to call back. Have a great day!
+
+[PATIENT]: Thank you so much, and sorry again for the mix-up. You have a great day as well. Goodbye!

@@ -1,0 +1,32 @@
+Scenario: General Questions — Hours, Location, New Patients
+Started:  2026-02-24T05:36:40.809642
+Turns:    14
+============================================================
+
+[AGENT]: Para español, oprima el 2.
+
+[AGENT]: Thanks for calling Pivot Point Orthopedics, part of Pretty Good AI. Am I speaking with Sarah?
+
+[PATIENT]: Oh, actually my name is Rachel Adams. I’m looking for a new orthopedic doctor and I had a few questions. Could you tell me what your office hours are?
+
+[PATIENT]: Thank you for that. I’m also wondering if you’re open on weekends at all?
+
+[AGENT]: Pivot Point Orthopedics is open Monday, Tuesday, and Thursday from 9 a.m. to 4 p.m., Wednesday from 12 p.m. to 7 p.m., and Friday from 9 a.m. to 12 p.m. Is there anything else you'd like to know about our clinic or providers?
+
+[PATIENT]: Got it, thank you. I also wanted to ask if you accept UnitedHealthcare insurance?
+
+[AGENT]: We're not open on weekends. The clinic is open Monday through Friday only. Would you like information about our doctors or how to schedule an appointment?
+
+[AGENT]: We do accept most insurance plans, including UnitedHealthcare. If you'd like to schedule a visit...
+
+[PATIENT]: That’s great to know. One last question I had—are you currently accepting new patients?
+
+[AGENT]: I can help with that. Would you like to book an appointment or have more questions?
+
+[AGENT]: Yes, we are accepting new patients. If you decide to schedule, just let me know. Anything else I can help with?
+
+[PATIENT]: That’s all I needed to know for now. Thank you so much for your help! I’ll call back if I decide to schedule. Have a great day!
+
+[AGENT]: Got it. If you have more questions or want to book an appointment just give us a call. Have a great day!
+
+[PATIENT]: Thanks again, bye!

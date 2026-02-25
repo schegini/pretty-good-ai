@@ -1,0 +1,38 @@
+Scenario: Edge Case — Contradictory Information
+Started:  2026-02-24T07:18:19.124241
+Turns:    17
+============================================================
+
+[AGENT]: Para español, oprima el 2.
+
+[AGENT]: Thanks for calling pivot point orthopedics part of pretty good AI am I speaking with Sarah
+
+[PATIENT]: Hi, no, this is Nancy Thompson. I'm calling to make an appointment. I’ve been having left shoulder pain since last week and it’s getting worse.
+
+[AGENT]: Scott at Nancy, can you please provide your date of birth?
+
+[PATIENT]: Sure, it’s February 14, 1972.
+
+[AGENT]: Let me confirm, your name is Nancy Thompson and your date of birth is February 14th, 1972. Is that correct? If so, could you please spell your first and last name for me?
+
+[PATIENT]: Yes, that’s correct. My first name is Nancy, N-A-N-C-Y, and my last name is Thompson, T-H-O-M-P-S-O-N.
+
+[AGENT]: Would you like me to look up your record using the phone number you have on file with us? If so, please provide that number. If you're not sure, just let me know and we can confirm your name and date of birth again.
+
+[PATIENT]: Yes, that would be great. The number you should have on file is 555-0789.
+
+[AGENT]: Let me confirm, I have your phone number as 555-0789 and your date of birth as February 14, 1972. Is that correct?
+
+[PATIENT]: Yes, that’s correct.
+
+[PATIENT]: Sure, I appreciate that. Thank you.
+
+[AGENT]: I can't proceed further right now, but I can make sure our clinic support team follows up with you. Please hold on while I document your request for an appointment due to your left shoulder pain.
+
+[PATIENT]: No, that’s all I needed for now. Thanks so much for your help. Have a great day!
+
+[AGENT]: This is a demo clinic, so live transfer isn't available right now. In a real clinic, you'd be connected to a support team member. Is there anything else I can help you with today?
+
+[PATIENT]: You too, goodbye!
+
+[AGENT]: Got it. Take care and have a great day.

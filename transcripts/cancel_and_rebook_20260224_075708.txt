@@ -1,0 +1,40 @@
+Scenario: Cancel Then Immediately Rebook
+Started:  2026-02-24T07:53:50.744926
+Turns:    18
+============================================================
+
+[AGENT]: Para Español, oprima el 2.
+
+[AGENT]: Thanks for calling pivot point orthopedics part of pretty good AI am I speaking with Sarah?
+
+[PATIENT]: Oh, hi. Actually, this is Alex Rivera. I'm calling because I need to cancel my appointment for next Friday at 11 a.m.
+
+[PATIENT]: Sure, it's May 5th, 1988.
+
+[AGENT]: Can you please provide your date of birth?
+
+[AGENT]: Let me confirm, your full name is Alex Rivera and your date of birth is May 5th, 1988. Is that correct? If so, could you please spell your first and last name for me?
+
+[PATIENT]: Yes, that’s correct. My first name is spelled A-L-E-X, and my last name is R-I-V-E-R-A.
+
+[PATIENT]: Yeah, that would be great. The phone number on file should be 555-0890.
+
+[PATIENT]: Yes, that’s correct.
+
+[AGENT]: Let me confirm, I have your phone number as 5550890 and your date of birth as May 5, 1988. Is that correct?
+
+[AGENT]: I can't pull up your information right now, but I'll make sure our clinic support team follows up with you about canceling your appointment. Please hold while I document this for our team.
+
+[PATIENT]: Oh, okay. Actually, I’ve changed my mind. Instead of canceling completely, could I reschedule it for a different time? Maybe the following Monday if there’s availability.
+
+[AGENT]: Got it, Alex. I'll update your request to reschedule your appointment for the following Monday instead of canceling. Please hold while I document this for our team.
+
+[AGENT]: I'm unable to access your record right now, so I can't reschedule your appointment directly. Our clinic support team will need to help you with this. Would you like me to have them follow up with you as soon as possible?
+
+[PATIENT]: Yeah, that works for me. I’d appreciate it if someone could follow up soon. Thanks for your help with that.
+
+[PATIENT]: No, that’s all for now. Thanks so much for your help. Have a great day!
+
+[AGENT]: You too. Take care!
+
+[PATIENT]: Thanks, you too! Bye!

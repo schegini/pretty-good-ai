@@ -1,0 +1,62 @@
+Scenario: Edge Case — Sunday Appointment Request
+Started:  2026-02-24T05:41:26.000027
+Turns:    29
+============================================================
+
+[AGENT]: Para español, oprima el 2.
+
+[AGENT]: Thanks for calling pivot point orthopedics part of pretty good AI my speaking with Sarah
+
+[PATIENT]: Hi, I’m Pat Davis. I’m calling to book an appointment for this Sunday. Is 10 a.m. available by any chance?
+
+[AGENT]: Got it, Pat. Just to confirm, are you booking this appointment for yourself or for someone else?
+
+[PATIENT]: It’s for myself. I really only have Sundays free because of my work schedule.
+
+[PATIENT]: Sure, it’s January 8, 1985.
+
+[AGENT]: Understood, Pat. Can you please provide your data first? I'll check Sunday availability for you.
+
+[PATIENT]: Yes, that’s correct. My first name is Pat, P-A-T, and my last name is Davis, D-A-V-I-S.
+
+[AGENT]: Let me confirm your details. I have your name as Pat Davis and your date of birth as January 8, 1985. Is that correct? If so, could you please spell your first and last name for me?
+
+[AGENT]: Would you like me to look up your record using your phone number? If so, please provide the number you have on file with us. If you're not sure, I can confirm your name and date of birth with you again. Which would you prefer?
+
+[PATIENT]: I can give you the phone number. It should be 555-0321. Let me know if you find me with that.
+
+[AGENT]: Let me confirm your phone number is 5550321 and your date of birth is January 8th, 1985. I'll check your record now.
+
+[PATIENT]: That’s correct, thank you. I really appreciate it if we can figure out a Sunday slot. I’m only available that day.
+
+[AGENT]: I'm having trouble finding your record in the system. I can connect you to our patient support team to help with booking your appointment. Please stay on the line while I transfer your call.
+
+[PATIENT]: Sure, that’s fine. I’ll hold on.
+
+[AGENT]: Live transfer.
+
+[PATIENT]: Hi there, thanks for picking up. I’m trying to book an appointment for Sunday because that’s the only day I’m free. Do you have any availability around 10 a.m.?
+
+[AGENT]: I'm not able to book appointments for Sundays as Pivot Point Orthopedics is open Monday through Friday. Would you like to look at available times on a weekday morning instead?
+
+[PATIENT]: I really can only do Sundays because I work Monday through Saturday. Are you absolutely sure there’s no possibility, even in the morning on Sunday?
+
+[AGENT]: Yes, I'm sure. Civet Point Orthopedics is only open Monday through Friday with no appointments available on Sundays. If your schedule changes or you'd like to see weekday options, I can help with that.
+
+[PATIENT]: All right, I understand. In that case, could we look at the earliest possible morning slot on a weekday? That might be my only option.
+
+[AGENT]: Got it. Let me check the earliest available morning appointment for you. One moment while I look that up.
+
+[PATIENT]: Thank you, I appreciate that. Hopefully there’s something early enough that I can squeeze in before work.
+
+[PATIENT]: I can be flexible
+
+[AGENT]: Thank you.
+
+[AGENT]: Understood. I'll find...
+
+[PATIENT]: Thank you so much for checking.
+
+[AGENT]: No problem.
+
+[PATIENT]: All right, just let me know what works.

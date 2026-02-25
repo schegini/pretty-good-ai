@@ -1,0 +1,48 @@
+Scenario: Edge Case — Vague, Rambling Patient
+Started:  2026-02-24T05:57:04.736377
+Turns:    22
+============================================================
+
+[AGENT]: Para Español, oprima el 2.
+
+[AGENT]: Thanks for calling pivot point orthopedics part of pretty good AI am I speaking with Sarah
+
+[PATIENT]: Oh, uh, no, this is Tom. I’m calling because I’ve been having this, well, kind of a pain, but I’m not exactly sure if it’s my hip or my lower back area. I wasn’t really sure who I should call about it, so... yeah.
+
+[AGENT]: Got it Tom. Pivot point orthopedics helps with joint, muscle, and bone pain, including hip and lower back issues.
+
+[AGENT]: Are you looking to schedule a new patient consultation to get this checked out?
+
+[PATIENT]: Yeah, I guess so. I mean, I’m not really sure what’s causing it, you know? Sometimes it feels like it’s in my hip, but then other times it’s more like my lower back. I thought maybe I should see someone about it, but wasn’t sure if this is the right place.
+
+[PATIENT]: Oh, sure. My name’s Tom Martinez, and my birthdate is September 12, 1963.
+
+[AGENT]: You're in the right place. Our clinic specializes in diagnosing and treating hip and lower back pain. Let's get you set up for a new patient consultation so a provider can evaluate what's going on. I'll just need to get you started in our system. Can I get your full name and date of birth to begin?
+
+[AGENT]: Let me confirm, your name is Tom Martinez and your date of birth is September 12th, 1963. Is that correct? If so, could you please spell your first and last name for me?
+
+[PATIENT]: Yeah, that’s right. It’s T-O-M for my first name, and my last name is M-A-R-T-I-N-E-Z.
+
+[AGENT]: Would you like me to look up your record using the phone number you have on file with us? If so, please provide that number. If you're not sure, I can confirm your name and date of birth with you again. Which would you prefer?
+
+[PATIENT]: Oh, I’m not sure which number you have on file, to be honest. I’ve had the same cell for a while though. Maybe it’s best if you look me up by my name and birthdate, just to be safe.
+
+[AGENT]: No problem. Let's confirm your details one more time. Please spell your first and last name for me and confirm your date of birth.
+
+[PATIENT]: Sure thing. First name is Tom—T-O-M—and last name Martinez—M-A-R-T-I-N-E-Z. Birthdate is September 12, 1963.
+
+[AGENT]: I can't get you started in our system right now, but I can connect you to our patient support team for help. Please stay on the line while I transfer you.
+
+[PATIENT]: Oh, sure, that’s fine. I appreciate the help. Thank you.
+
+[AGENT]: Live Transcript
+
+[PATIENT]: Alright, I’ll hang tight. Thanks again!
+
+[AGENT]: Just so you know, this is a demo clinic and log transfer isn't available right now. In a real clinic, you'd be connected to a support team member. If you have more questions or want to try anything else with me, let me know.
+
+[PATIENT]: Oh, I see. No worries, I appreciate you helping me figure out whether I’m in the right place. I think I’ll try to check with someone more directly to sort it out. Thanks for your time!
+
+[AGENT]: Got it, Tom. If you decide to come back, Tivit Point Orthopedics is here to help with hip and lower back pain. Take care and hope you feel better soon.
+
+[PATIENT]: Thank you, I really appreciate that. I’ll keep that in mind. Take care!
