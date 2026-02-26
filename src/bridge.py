@@ -125,7 +125,7 @@ class RealtimeBridge:
         })
         await self._send({"type": "response.create"})
 
-        print(f"  ✓ Realtime bridge ready — Scenario: {self.scenario['name']}")
+        print(f"  Realtime bridge ready — Scenario: {self.scenario['name']}")
 
     # Telnyx → OpenAI (inbound agent audio)
     async def forward_audio_to_openai(self, audio_base64: str):
@@ -133,7 +133,7 @@ class RealtimeBridge:
         if self._connected and self.openai_ws:
             self._audio_chunks_received += 1
             if self._audio_chunks_received in (1, 10, 50, 100, 500):
-                print(f"  🔊 Audio chunks received from Telnyx: {self._audio_chunks_received}")
+                print(f"  Audio chunks received from Telnyx: {self._audio_chunks_received}")
             await self._send({
                 "type": "input_audio_buffer.append",
                 "audio": audio_base64,
@@ -241,3 +241,4 @@ class RealtimeBridge:
             except Exception:
                 pass
         print(f"  Bridge closed ({len(self.transcript)} transcript entries)")
+
