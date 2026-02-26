@@ -2,7 +2,7 @@
 
 Automated voice bot that calls the Pivot Point Orthopedics AI receptionist, simulates realistic patient scenarios, and identifies bugs in the agent's responses.
 
-Loom walkthrough: [TODO: Add link]
+Loom walkthrough: https://www.loom.com/share/0c994429980741b0ae3e603ec8562043
 
 ## Architecture
 
